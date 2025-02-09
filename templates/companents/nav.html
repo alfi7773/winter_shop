@@ -1,0 +1,26 @@
+<nav>
+  <div class="nav-bar">
+    <div class="cust-display">
+      <label for="city">Ваш регион доставки:</label>
+      <select id="city" onchange="updateCity()">
+        <option value="">Выберите...</option>
+
+        {% comment %} <option value="Москва">Москва</option>
+        <option value="Санкт-Петербург">Санкт-Петербург</option>
+        <option value="Новосибирск">Новосибирск</option> {% endcomment %}
+        {% for country in countries %}
+          <option value="">{{ country.name }}</option>
+        {% endfor %}
+      </select>
+      <a href="/">Магазины</a>
+      <a href="/">Помощь</a>
+      <a href="/">Блоги</a>
+    </div>
+
+    <div class="cust-display">
+      <div class="car"></div><a href="">Бесплатная доставка *</a>
+      <div class="card"></div><a href="">Оплата при получении</a>
+      <div class="answer"></div><a href="">Возврат в течение 14 дней</a>
+    </div>
+  </div>
+</nav>

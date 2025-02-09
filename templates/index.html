@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+
+  <header class="display ">
+    <div class="cust-display">
+      {% for type in types %}
+        <a href="">{{ type.name }}</a>
+      {% endfor %}
+    </div>
+    <div>
+      <div class="logo"></div>
+    </div>
+    <div class="cust-display">
+      <div>
+        <i class="fa-solid fa-user"></i><a href="">ВОЙТИ</a>
+      </div>
+      <div>
+        <i class="fa-solid fa-star"></i><a href="">Избранное</a>
+      </div>
+      <div>
+        <i class="fa-solid fa-cart-shopping"></i><a href="">Корзина</a>
+      </div>
+      <div>
+        <i class="fa-solid fa-magnifying-glass"></i><a href="">ПОИСК</a>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="cust-display display-category">
+        {% for category in categories %}
+            <a href="">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+  </section>
+  <div></div>
+</div>
+
+<div class="pad-50">
+    <div class="slider-container">
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="slider">
+            <div class="slide"><div class="img-1"></div></div>
+            <div class="slide"><div class="img-2"></div></div>
+            <div class="slide"><div class="img-3"></div></div>
+        </div>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="display">
+        {% for brand in brands %}
+        <img src="{{ brand.image.url }}" alt="">
+        {% endfor %}
+    </div>
+
+    <div class="display cust-display">
+        <a href="">
+            <div class="aks-1"></div>
+        </a>
+        <a href="">
+        <div class="aks-2"></div>
+    </a>
+    </div>
+
+    <div>
+        <center class="pad-50">
+            <h1>
+                Новинки
+            </h1>
+        </center>
+    </div>
+</div>
+
+{% endblock %}
