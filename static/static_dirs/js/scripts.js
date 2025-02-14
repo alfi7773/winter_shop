@@ -21,3 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".next").addEventListener("click", () => moveSlide(1));
 });
 
+
+
+function scrollSlider(direction) {
+    const slider = document.getElementById("productSlider");
+    const scrollAmount = 300; // Шаг прокрутки
+    slider.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+}

@@ -93,10 +93,13 @@ class Product(TimeAbstractModel):
     category = models.ForeignKey('board.Category',verbose_name='категория', on_delete=models.PROTECT, related_name='product')
     tags = models.ManyToManyField('board.Tag', verbose_name='тэги')
     image = models.ManyToManyField('board.ImageProduct')
+    price = models.DecimalField('цена', decimal_places=2, max_digits=10, blank=True, null=True)
     
     @property
     def image(self):
-        return self.images.first()
+        if self.images.first():
+            return self.images.first().image
+        return None
     
     def __str__(self):
         return self.name

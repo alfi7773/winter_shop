@@ -1,76 +1,134 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
+  <div class="container">
+    <header class="display">
+      <div class="cust-display">
+        {% for type in types %}
+          <a href="">{{ type.name }}</a>
+        {% endfor %}
+      </div>
+      <div>
+        <div class="logo"></div>
+      </div>
+      <div class="cust-display">
+        <div>
+          <i class="fa-solid fa-user"></i><a href="">ВОЙТИ</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-star"></i><a href="">Избранное</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-cart-shopping"></i><a href="">Корзина</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-magnifying-glass"></i><a href="">ПОИСК</a>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="cust-display display-category">
+        {% for category in categories %}
+          <a href="">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+    </section>
+    <div></div>
+  </div>
 
-  <header class="display ">
-    <div class="cust-display">
-      {% for type in types %}
-        <a href="">{{ type.name }}</a>
+  <div class="pad-50">
+    <div class="slider-container">
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <div class="slider">
+        <div class="slide">
+          <div class="img-1"></div>
+        </div>
+        <div class="slide">
+          <div class="img-2"></div>
+        </div>
+        <div class="slide">
+          <div class="img-3"></div>
+        </div>
+      </div>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="display pad-50">
+      {% for brand in brands %}
+        <img src="{{ brand.image.url }}" alt="" />
       {% endfor %}
     </div>
-    <div>
-      <div class="logo"></div>
-    </div>
-    <div class="cust-display">
-      <div>
-        <i class="fa-solid fa-user"></i><a href="">ВОЙТИ</a>
-      </div>
-      <div>
-        <i class="fa-solid fa-star"></i><a href="">Избранное</a>
-      </div>
-      <div>
-        <i class="fa-solid fa-cart-shopping"></i><a href="">Корзина</a>
-      </div>
-      <div>
-        <i class="fa-solid fa-magnifying-glass"></i><a href="">ПОИСК</a>
-      </div>
-    </div>
-  </header>
-  <section>
-    <div class="cust-display display-category">
-        {% for category in categories %}
-            <a href="">{{ category.name }}</a>
-        {% endfor %}
-    </div>
-  </section>
-  <div></div>
-</div>
 
-<div class="pad-50">
-    <div class="slider-container">
-        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-        <div class="slider">
-            <div class="slide"><div class="img-1"></div></div>
-            <div class="slide"><div class="img-2"></div></div>
-            <div class="slide"><div class="img-3"></div></div>
+    <div class="display cust-display pad-100">
+      <a href=""><div class="aks-1"></div></a>
+      <a href=""><div class="aks-2"></div></a>
+    </div>
+    
+    
+
+    <div>
+      <center class="pad-200">
+        <h1>Новинки</h1>
+      </center>
+
+      <div class="slider-container2">
+        <button class="prev2" onclick="scrollSlider(-1)">&#10094;</button>
+        <div class="slider2" id="productSlider">
+          {% for product in products %}
+          
+          <div class="card">
+              <a href="{% url "detail" id=product.id %}">
+              <img class="div-img" src="{{ product.image.url }}" alt="" />
+              <h3>{{ product.name }}</h3>
+              <p class="gray">{{ product.decription }}</p>
+              <h3>{{ product.price }}P</h3>
+            </a>
+            </div>
+          {% endfor %}
         </div>
-        <button class="next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-</div>
-
-<div class="container">
-    <div class="display">
-        {% for brand in brands %}
-        <img src="{{ brand.image.url }}" alt="">
-        {% endfor %}
+        <button class="next2" onclick="scrollSlider(1)">&#10095;</button>
+      </div>
     </div>
 
-    <div class="display cust-display">
+    <div class="button">
+      {% comment %} <div class="aks-2"></div> {% endcomment %}
+      <center>
+
         <a href="">
-            <div class="aks-1"></div>
+        <button>
+            Показать больше
+          </button>
         </a>
-        <a href="">
-        <div class="aks-2"></div>
-    </a>
+      </center>
     </div>
 
-    <div>
-        <center class="pad-50">
-            <h1>
-                Новинки
-            </h1>
-        </center>
-    </div>
+    <center class="pad-50">
+    <div class="display cust-display">
+        <div class="club">
+          <div class="col-display">
+            <div class="logo-white"></div>
+            <h2>Программа лояльности</h2>
+            <p>Зарабатывайте баллы и получайте преимущества</p>
+            <a class="button-white" href="">  
+              <button >
+                Вступить в клуб
+              </button>
+            </a>
+            </div>
+        </div>
+        <div class="register-img">
+          <div class="col-display">
+            <div class="emal"></div>
+            <h2>Скидка -10%</h2>
+            <p>За подписку на наши новости</p>
+            <input type="email" placeholder="Email">
+          </div>
+        </div>
+      </div>
+    </center>
+
+
+  
 </div>
-
 {% endblock %}

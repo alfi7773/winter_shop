@@ -1,0 +1,132 @@
+{% load static %}
+<DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRD - Главная</title>
+    <link rel="stylesheet" href="{% static 'css/styletimx.css' %}" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #333;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      main {
+        padding: 20px;
+        text-align: center;
+      }
+      {% comment %} .slider {
+        position: relative;
+        max-width: 600px;
+        margin: auto;
+        overflow: hidden;
+      } {% endcomment %}
+      {% comment %} .slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      } {% endcomment %}
+      {% comment %} .slides img {
+        {% comment %} width: 100%;
+        border-radius: 10px;
+      }
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+      } {% endcomment %}
+      {% comment %} .prev {
+        left: 10px;
+      }
+      .next {
+        right: 10px;
+      } {% endcomment %}
+      footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>BRD</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url "main" %}">Главная</a>
+          </li>
+          <li>
+            <a href="#">О компании</a>
+          </li>
+          <li>
+            <a href="#">Услуги</a>
+          </li>
+          <li>
+            <a href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h2>Добро пожаловать на BRD</h2>
+        <p>Описание компании и услуг.</p>
+        <p id="extraInfo" style="display: none;">BRD предоставляет широкий спектр услуг в сфере IT и консалтинга.</p>
+      </section>
+      <div class="pad-50">
+        <div class="slider-container">
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <div class="slider">
+            <div class="slide">
+              <div class="img-1"></div>
+            </div>
+            <div class="slide">
+              <div class="img-2"></div>
+            </div>
+            <div class="slide">
+              <div class="img-3"></div>
+            </div>
+          </div>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 BRD. Все права защищены.</p>
+    </footer>
+   
+
+<script src="{% static 'js/scripts.js' %}"></script>
+
+</body>
+</html>
