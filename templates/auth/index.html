@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Winter Scroll Animation</title>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+        }
+        .container {
+            position: relative;
+            height: 300vh;
+        }
+        .layer {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+        .bg {
+            background-image: url('https://source.unsplash.com/1920x1080/?snow,mountains');
+            z-index: 1;
+            transform: scale(1.2);
+        }
+        .fog {
+            background-image: url('https://source.unsplash.com/1920x1080/?fog');
+            z-index: 2;
+            opacity: 0.3;
+        }
+        .snowflakes {
+            z-index: 3;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+            z-index: 4;
+        }
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        .frosted {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, rgba(255,255,255,0.05) 50%, transparent 80%);
+            filter: blur(5px);
+            opacity: 0;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="layer bg"></div>
+        <div class="layer fog"></div>
+        <div class="layer snowflakes"></div>
+        <div class="text">Welcome to the Frozen World</div>
+        <div class="frosted"></div>
+    </div>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.to(".bg", {
+            scale: 1,
+            scrollTrigger: {
+                trigger: ".container",
+                start: "top top",
+                end: "bottom center",
+                scrub: true
+            }
+        });
+
+        gsap.to(".fog", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".container",
+                start: "top center",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        gsap.to(".frosted", {
+            opacity: 1,
+            filter: "blur(10px)",
+            scrollTrigger: {
+                trigger: ".container",
+                start: "top top",
+                end: "bottom center",
+                scrub: true
+            }
+        });
+
+        function createSnowflakes(num) {
+            for (let i = 0; i < num; i++) {
+                let snowflake = document.createElement("div");
+                snowflake.innerHTML = "❄";
+                snowflake.classList.add("snowflake");
+                document.querySelector(".snowflakes").appendChild(snowflake);
+                
+                gsap.set(snowflake, {
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    scale: Math.random() * 0.5 + 0.5
+                });
+
+                gsap.to(snowflake, {
+                    y: window.innerHeight + 20,
+                    x: "+=" + (Math.random() * 100 - 50),
+                    duration: Math.random() * 5 + 3,
+                    repeat: -1,
+                    ease: "linear"
+                });
+            }
+        }
+        createSnowflakes(150);
+    </script>
+</body>
+</html>

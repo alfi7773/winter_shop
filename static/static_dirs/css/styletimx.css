@@ -57,6 +57,22 @@ a {
 
 }
 
+.col-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.display2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    flex-wrap: wrap;
+
+}
+
 .cust-display {
     display: flex;
     gap: 20px;
@@ -246,6 +262,35 @@ a {
     height: auto;
     border-radius: 8px;
 }
+
+.slider-container3 {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 1000%;
+    max-width: 1400px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider3 {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Скрыть скроллбар */
+    gap: 20px;
+    -ms-overflow-style: none;
+    white-space: nowrap;
+    width: calc(250px * 5);
+    /* Минимальная ширина */
+    height: 20vh;
+}
+
+.slider3::-webkit-scrollbar {
+    display: none;
+}
+
 
 button {
     background: white;
