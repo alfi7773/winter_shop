@@ -1,5 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
+
+from .forms import LoginForm, RegisterForm
+from django.contrib.auth import login, authenticate, logout
 from .models import *
 # from django.http.response import HttpResponce
 
@@ -56,7 +59,43 @@ def type(request,  id):
         'products': products,
     })
 def login_user(request):
-    return render(request, 'auth/index.html')
+    if request.user.is_authenticated:
+            return redirect('/')
+
+    form = LoginForm()
+    if request.method == 'POST':
+            form = LoginForm(data=request.POST)
+
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password')
+
+                # user = User.objects.filter(username=username).first()
+                # if user and user.check_password(password):
+                user = authenticate(username=username, password=password)
+                if user:
+                    login(request, user)
+
+                    return redirect('workspace')
+
+                # messages.error(request, 'The user is not found or the password is incorrect.')
+
+    return render(request, 'auth/login.html', {'form': form})
+
+def register_user(request):
+    if request.user.is_authenticated:
+            return redirect('/')
+
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+                user = form.save()
+                login(request, user)
+                return redirect('workspace')
+    else:
+        form = RegisterForm()
+
+    return render(request, 'auth/register.html', {'form': form})
 
 # def main2(request):
 #     return render(request, 'base2.html')

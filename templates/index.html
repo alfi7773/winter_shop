@@ -19,7 +19,19 @@
           </a>
         </div>
         {% endif %}
-
+{% comment %} 
+        <ul class="menu">
+          <li class="category">
+              Мужчинам
+              <ul class="submenu">
+                  <li>Коллекции</li>
+                  <li>Обувь</li>
+                  <li>Одежда</li>
+                  <li>Аксессуары</li>
+              </ul>
+          </li>
+      </ul> {% endcomment %}
+      
 
         {% if not request.user.is_authenticated %}
         <div class="col-nav">
@@ -49,7 +61,17 @@
     <section>
       <div class="cust-display display-category">
         {% for category in categories %}
+        <ul class="menu">
+          <li class="category">
           <a href="{% url "category" category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+            <li>Коллекции</li>
+            <li>Обувь</li>
+            <li>Одежда</li>
+            <li>Аксессуары</li>
+        </ul>
+      </li>
+    </ul>
         {% endfor %}
       </div>
     </section>

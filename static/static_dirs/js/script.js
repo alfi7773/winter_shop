@@ -32,3 +32,10 @@ window.addEventListener("load", () => {
       "<"
     );
 });
+
+document.querySelectorAll('.category').forEach(item => {
+  item.addEventListener('click', () => {
+      let submenu = item.querySelector('.submenu');
+      submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+  });
+});

@@ -15,39 +15,45 @@
                 <h1>Login</h1>
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" required>
-                    <label for="">Email</label>
+                    {% comment %} <input type="email" required> {% endcomment %}
+                    {{ form.username }}
+                    {% comment %} <label for="">username</label> {% endcomment %}
                 </div>
 
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" required>
-                    <label for="">Email</label>
+                    {% comment %} <input type="email" required> {% endcomment %}
+                    {{ form.first_name }}
+                    {% comment %} <label for="">first_name</label> {% endcomment %}
                 </div>
 
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" required>
-                    <label for="">Email</label>
+                    {{ form.last_name }}
+                    {% comment %} <label for="">last_name</label> {% endcomment %}
                 </div>
 
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" required>
-                    <label for="">Email</label>
+                    {% comment %} <input type="email" required> {% endcomment %}
+                    {{ form.email }}
+                    {% comment %} <label for="">Email</label> {% endcomment %}
                 </div>
 
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" required>
-                    <label for="">Email</label>
+                    {% comment %} <input type="email" required> {% endcomment %}
+                    {{ form.password1 }}
+                    {% comment %} <label for="">password1</label> {% endcomment %}
                 </div>
 
                 <div class="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" required>
-                    <label for="">Password</label>
+                    {{ form.password2 }}
+                    {% comment %} <label for="">password2</label> {% endcomment %}
                 </div>
+
+                <button type="submit">Register</button>
                 <div class="forget">
                     <label for=""><input type="checkbox">Remember Me</label>
                   <a href="#">Forget Password</a>
