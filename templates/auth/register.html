@@ -1,4 +1,7 @@
 {% load static %}
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% comment %} {% block content %} {% endcomment %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +49,7 @@
                     {{ form.password1 }}
                     {% comment %} <label for="">password1</label> {% endcomment %}
                 </div>
-
+                
                 <div class="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     {{ form.password2 }}

@@ -13,31 +13,19 @@
       <div class="cust-display">
         {% if not request.user.is_authenticated %}
         <div class="col-nav">
-          <a href="">
+          <a href="{% url "register" %}">
             <i class="fa-solid fa-user"></i>
             <a href="">РЕГИСТРАЦИЯ</a>
           </a>
         </div>
         {% endif %}
-{% comment %} 
-        <ul class="menu">
-          <li class="category">
-              Мужчинам
-              <ul class="submenu">
-                  <li>Коллекции</li>
-                  <li>Обувь</li>
-                  <li>Одежда</li>
-                  <li>Аксессуары</li>
-              </ul>
-          </li>
-      </ul> {% endcomment %}
       
 
         {% if not request.user.is_authenticated %}
         <div class="col-nav">
-          <a href="">
+          <a href="{% url "login" %}">
             <i class="fa-solid fa-user"></i>
-            <a href="">ВОЙТИ</a>
+            <a href="{% url "login" %}">ВОЙТИ</a>
           </a>
         </div>
         {% endif %}
