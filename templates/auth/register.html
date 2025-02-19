@@ -14,12 +14,16 @@
 
     <body>
         <section>
-            <form>
+            <form action="{% url 'register' %}" method="post" novalidate>
+                {% csrf_token %}
                 <h1>Login</h1>
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
                     {% comment %} <input type="email" required> {% endcomment %}
                     {{ form.username }}
+                    <div class="red-text">
+                        {{ form.username.errors }}
+                    </div>
                     {% comment %} <label for="">username</label> {% endcomment %}
                 </div>
 
@@ -27,12 +31,18 @@
                     <ion-icon name="mail-outline"></ion-icon>
                     {% comment %} <input type="email" required> {% endcomment %}
                     {{ form.first_name }}
+                    <div class="red-text">
+                        {{ form.first_name.errors }}
+                    </div>
                     {% comment %} <label for="">first_name</label> {% endcomment %}
                 </div>
 
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
                     {{ form.last_name }}
+                    <div class="red-text">
+                        {{ form.last_name.errors }}
+                    </div>
                     {% comment %} <label for="">last_name</label> {% endcomment %}
                 </div>
 
@@ -40,6 +50,9 @@
                     <ion-icon name="mail-outline"></ion-icon>
                     {% comment %} <input type="email" required> {% endcomment %}
                     {{ form.email }}
+                    <div class="red-text">
+                        {{ form.email.errors }}
+                    </div>
                     {% comment %} <label for="">Email</label> {% endcomment %}
                 </div>
 
@@ -47,12 +60,18 @@
                     <ion-icon name="mail-outline"></ion-icon>
                     {% comment %} <input type="email" required> {% endcomment %}
                     {{ form.password1 }}
+                    <div class="red-text">
+                        {{ form.password1.errors }}
+                    </div>
                     {% comment %} <label for="">password1</label> {% endcomment %}
                 </div>
                 
                 <div class="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     {{ form.password2 }}
+                    <div class="red-text">
+                        {{ form.password2.errors }}
+                    </div>
                     {% comment %} <label for="">password2</label> {% endcomment %}
                 </div>
 

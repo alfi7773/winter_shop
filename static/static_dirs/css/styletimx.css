@@ -604,3 +604,10 @@ button {
     display: block;
 }
 
+li {
+    padding: 5px;
+}
+
+.red-text {
+    color: red;
+}

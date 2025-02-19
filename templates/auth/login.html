@@ -1,4 +1,4 @@
-{% comment %} {% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,27 +11,33 @@
 
     <body>
         <section>
-            <form>
+            <form action="{% url 'login' %}" method="post" novalidate>
+              {% csrf_token %}
                 <h1>Login</h1>
                 <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon> {% endcomment %}
-                    {% comment %} <input type="email" required> {% endcomment %}
-                    {% comment %} {{ form.username }}
-                    <label for="">Email</label>
+                    <ion-icon name="mail-outline"></ion-icon> 
+                    {{ form.username }}
+                    <div class="red-text">
+                      {{ form.username.errors }}
+                  </div>
+                    <label for="">username</label>
                 </div>
                 <div class="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon> {% endcomment %}
+                    <ion-icon name="lock-closed-outline"></ion-icon>
                     {% comment %} <input type="password" required> {% endcomment %}
-                    {% comment %} {{ form.password }}
+                    {{ form.password }}
+                    <div class="red-text">
+                      {{ form.password.errors }}
+                  </div>
                     <label for="">Password</label>
                 </div>
                 <div class="forget">
                     <label for=""><input type="checkbox">Remember Me</label>
-                  <a href="#">Forget Password</a>
+                  <a href="">Forget Password</a>
                 </div>
-                <button>Log in</button>
+                <button type="submit">Log in</button>
                 <div class="register">
-                    <p>Don't have a account <a href="#">Register</a></p>
+                    <p>Don't have a account <a href="{% url "register" %}">Register</a></p>
                 </div>
             </form>
         </section>
@@ -39,124 +45,4 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 
-</html> {% endcomment %}
-
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://codepen.io/GreenSock/pen/xxmzBrw.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-    <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-    {% comment %} <script src="{% static 'js/script.js' %}"></script> {% endcomment %}
-
-    <title>Document</title>
-
-    <style>
-        /* author: https://codepen.io/GreenSock/pen/YzbPYMx
-GSAP
- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .wrapper,
-  .content {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-  }
-  
-  .content {
-    overflow-x: hidden;
-  }
-  
-  .content .section {
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .content .section.hero {
-    background-image: url(https://images.unsplash.com/photo-1589848315097-ba7b903cc1cc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .image-container {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    perspective: 500px;
-    overflow: hidden;
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
-  
-    </style>
-
-</head>
-<body>
-  <div class="wrapper">
-    <div class="content">
-      <section class="section hero"></section>
-      <section class="section gradient-purple"></section>
-      <section class="section gradient-blue"></section>
-    </div>
-    <div class="image-container">
-      <img src="https://assets-global.website-files.com/63ec206c5542613e2e5aa784/643312a6bc4ac122fc4e3afa_main%20home.webp" alt="image">
-    </div>
-  </div>
-
-  <script>
-    
-
-console.clear();
-
-gsap.registerPlugin(ScrollTrigger);
-
-window.addEventListener("load", () => {
-  gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: ".wrapper",
-        start: "top top",
-        end: "+=150%",
-        pin: true,
-        scrub: true,
-        markers: true
-      }
-    })
-    .to("img", {
-      scale: 2,
-      z: 350,
-      transformOrigin: "center center",
-      ease: "power1.inOut"
-    })
-    .to(
-      ".section.hero",
-      {
-        scale: 1.1,
-        transformOrigin: "center center",
-        ease: "power1.inOut"
-      },
-      "<"
-    );
-});
-  </script>
-</body>
 </html>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+| Catalogue
+{% endblock title %}
+
+{% block content %}
+
+
+    <div class="pad-50">
+        <div>
+            <h1>
+                Welcome to Catalogue
+            </h1>
+        </div>
+<div class="display">
+        <div class="container">
+            {% include 'companents/filter.html' %}
+        </div>
+        <div class="display2">
+            {% for product in products %}
+              
+                <a href="{% url "detail" product.id %}">
+                <img class="div-img" src="{{ product.image.url }}" alt="" />
+                <h3>{{ product.name }}</h3>
+                <h3>{{ type.name }}</h3>
+                <h3>{{ category.name }}</h3>
+                <p class="gray">{{ product.decription }}</p>
+                <h3>{{ product.price }}P</h3>
+              </a>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+
+{% include 'companents/pagination.html' %}
+
+{% endblock content %}

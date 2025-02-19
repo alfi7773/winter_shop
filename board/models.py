@@ -31,6 +31,19 @@ class Category(TimeAbstractModel):
     
     def __str__(self):
         return self.name
+    
+class AtCategory(TimeAbstractModel):
+    
+    class Meta:
+        verbose_name_plural = 'под категории'
+        verbose_name = 'под категория'
+        
+    name = models.CharField(verbose_name='название', max_length=100)
+    category = models.ForeignKey('board.Category', verbose_name='выберите категорию', on_delete=models.PROTECT, related_name='at_category')
+    type = models.ForeignKey('board.Type', verbose_name='выберите тип', on_delete=models.PROTECT, related_name='at_category')
+
+    def __str__(self):
+        return self.name
 
 class Tag(TimeAbstractModel):
     
@@ -91,6 +104,7 @@ class Product(TimeAbstractModel):
     decription = models.CharField('описание', max_length=100)
     type = models.ForeignKey('board.Type',verbose_name='типы', on_delete=models.PROTECT)
     category = models.ForeignKey('board.Category',verbose_name='категория', on_delete=models.PROTECT, related_name='product')
+    at_category = models.ForeignKey('board.AtCategory', verbose_name='выберите категорию', on_delete=models.PROTECT, related_name='product')
     tags = models.ManyToManyField('board.Tag', verbose_name='тэги')
     image = models.ManyToManyField('board.ImageProduct')
     price = models.DecimalField('цена', decimal_places=2, max_digits=10, blank=True, null=True)
