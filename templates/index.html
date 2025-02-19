@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block title %}
+| Boardriders
+{% endblock title %}
 {% block content %}
   <div class="container">
     <header class="display">
@@ -231,6 +234,23 @@
       </ul>
 
       {% for category in categories|slice:"10:11" %}
+        <ul class="menu">
+        <li class="category">
+          <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+              <ul class="submenu">
+                  {% for cat in categories2 %}
+                  <li>
+                    <a href="{% url "cat" cat.id %}">
+                          {{ cat.name }}
+                      </a>
+                  </li>
+                  {% endfor %}
+              </ul>
+          </li>
+          {% endfor %}
+      </ul>
+
+      {% for category in categories|slice:"11:12" %}
         <ul class="menu">
         <li class="category">
           <a href="{% url 'category' category.id %}">{{ category.name }}</a>
