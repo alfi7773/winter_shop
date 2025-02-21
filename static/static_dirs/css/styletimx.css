@@ -292,7 +292,7 @@ a {
 }
 
 
-button {
+.buttons {
     background: white;
     border: none;
     font-size: 24px;

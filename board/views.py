@@ -8,9 +8,33 @@ from django.contrib.auth import login, authenticate, logout
 from .models import *
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.sessions.models import Session
 
 
-# from django.http.response import HttpResponce
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart = request.session.get('cart', {})
+
+    if str(product_id) in cart:
+        cart[str(product_id)] += 1
+    else:
+        cart[str(product_id)] = 1
+
+    request.session['cart'] = cart 
+    return redirect('cart')
+
+
+def cart_view(request):
+    cart = request.session.get('cart', {})
+    products = Product.objects.filter(id__in=cart.keys())
+
+    cart_items = [
+        {'product': product, 'quantity': cart[str(product.id)]}
+        for product in products
+    ]
+
+    return render(request, 'cart.html', {'cart_items': cart_items})
+
 
 def main(request):
     countries = Country.objects.all()
@@ -72,8 +96,21 @@ def catalogue(request):
     
 def detail (request, id):
     product = get_object_or_404(Product, id=id)
+    products = Product.objects.all()
+    category = get_object_or_404(Category, id=id)
+    # productss = Product.objects.filter(category=category)
+    categories = Category.objects.all()
+    types = Type.objects.all()
+    categories2 = AtCategory.objects.all()
     return render(request, 'detail.html', {
         'product': product,
+        'products': products,
+        'category': category,
+        'id':id,
+        # 'products': productss,
+        'categories': categories,
+        'types': types,
+        'categories2': categories2,
     })
     
     

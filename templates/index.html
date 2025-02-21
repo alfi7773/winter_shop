@@ -39,7 +39,7 @@
         </div>
         <div class="col-nav">
           <a href="">
-            <i class="fa-solid fa-cart-shopping"></i><a href="">Корзина</a>
+            <i class="fa-solid fa-cart-shopping"></i><a href="{% url "cart" %}">Корзина</a>
           </a>
         </div>
         <div class="col-nav">
@@ -331,6 +331,7 @@
               <h3>{{ product.name }}</h3>
               <p class="gray">{{ product.decription }}</p>
               <h3>{{ product.price }}P</h3>
+              
             </a>
             </div>
           {% endfor %}

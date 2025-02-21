@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Корзина</h2>
+<ul>
+    <div class="display2">
+        {% for item in cart_items %}
+        <div>
+            <img src="{{ item.product.image.url }}" alt="">
+            <li>{{ item.product.name }} - Количество: {{ item.quantity }}</li>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+</ul>
+
+{% endblock content %}

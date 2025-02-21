@@ -3,12 +3,251 @@
 | Detail
 {% endblock title %}
 {% block content %}
+
+<section class="container">
+  <div class="cust-display display-category">
+    {% for category in categories|slice:"1" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                  <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+  
+
+
+  {% for category in categories|slice:"1:2" %}
+  <ul class="menu">
+  <li class="category">
+    <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+        <ul class="submenu">
+            {% for cat in categories2 %}
+            <li>
+              <a href="{% url "cat" cat.id %}">
+                    {{ cat.name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+
+{% for category in categories|slice:"2:3" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"3:4" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"4:5" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"5:6" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"6:7" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"7:8" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"8:9" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"9:10" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"10:11" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  {% for category in categories|slice:"11:12" %}
+    <ul class="menu">
+    <li class="category">
+      <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+          <ul class="submenu">
+              {% for cat in categories2 %}
+              <li>
+                <a href="{% url "cat" cat.id %}">
+                      {{ cat.name }}
+                  </a>
+              </li>
+              {% endfor %}
+          </ul>
+      </li>
+      {% endfor %}
+  </ul>
+
+  </div>
+</section>
+
   <div class="text-center pad-50">
     <img  class="div-img text-center" src="{{ product.image.url }}" alt="" />
     <div class="col-display">
         <h3>{{ product.name }}</h3>
         <p class="gray">{{ product.decription }}</p>
         <h3>{{ product.price }}P</h3>
+        <div class="button text-center">
+            <a href="{% url "add" product.id %}" class=" ">
+                <button class="">
+                    В корзину
+                  </button>
+              </a>
+          </div>
     </div>
   </div>
+
+
+  <section>
+    <div class="text-center">
+      <h1>Похожие товары</h1>
+    </div>
+    <div class="display2 container">
+      {% for product in products|slice:'1:4' %}
+        
+          <a href="{% url "detail" product.id %}">
+          <img class="div-img" src="{{ product.image.url }}" alt="" />
+          <h3>{{ product.name }}</h3>
+          <h3>{{ type.name }}</h3>
+          <h3>{{ category.name }}</h3>
+          <p class="gray">{{ product.decription }}</p>
+          <h3>{{ product.price }}P</h3>
+        </a>
+      {% endfor %}
+  </div>
+  </section>
 {% endblock %}
