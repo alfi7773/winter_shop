@@ -47,6 +47,12 @@
             <i class="fa-solid fa-magnifying-glass"></i><a href="">ПОИСК</a>
           </a>
         </div>
+
+        <div class="col-nav">
+          <a href="{% url "workspace" %}">
+            <i class="fa-solid fa-magnifying-glass"></i><a href="">WORKSPACE</a>
+          </a>
+        </div>
         {% if request.user.is_authenticated %}
         <div class="col-nav">
           <a href="{% url "logout" %}">

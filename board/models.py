@@ -1,5 +1,6 @@
 from django.db import models
 from django_resized import ResizedImageField
+from django.contrib.auth.models import User
 
 class TimeAbstractModel(models.Model):
     created_at = models.DateField('дата добавления', auto_now_add=True)
@@ -108,6 +109,7 @@ class Product(TimeAbstractModel):
     tags = models.ManyToManyField('board.Tag', verbose_name='тэги')
     image = models.ManyToManyField('board.ImageProduct')
     price = models.DecimalField('цена', decimal_places=2, max_digits=10, blank=True, null=True)
+    author = models.ForeignKey('auth.User', on_delete=models.PROTECT)
     
     @property
     def image(self):
