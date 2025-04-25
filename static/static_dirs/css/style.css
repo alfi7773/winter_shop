@@ -2,27 +2,27 @@
 https://codepen.io/ecemgo/pen/Baqpbez */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'poppins',sans-serif;
-}
+} */
 
-body {
-  display: flex;
+.login-page {
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: center; */
+  min-height: 190vh;
   background-image: url(https://user-images.githubusercontent.com/13468728/233847739-219cb494-c265-4554-820a-bd3424c59065.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
+} 
 
-section {
+.section {
     position: relative;
-    max-width: 400px;
+    /* max-width: 400px; */
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -31,6 +31,21 @@ section {
     justify-content: center;
     align-items: center;
     padding: 2rem 3rem;
+    top: 50px;
+}
+
+.section-login {
+  position: relative;
+  max-width: 400px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+  top: 50px;
 }
 
 h1 {
@@ -41,21 +56,26 @@ h1 {
 
 .inputbox {
     position: relative;
-    margin: 30px 0;
+    /* margin: 30px 0; */
     max-width: 310px;
     border-bottom: 2px solid #fff;
 }
 
-.inputbox::placeholder {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #fff;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.5s ease-in-out;
+.inputbox input::placeholder {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #bbb; 
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
 }
+
+.inputbox input:focus::placeholder {
+  color: transparent; 
+}
+
 
 input:focus ~ label, 
 input:valid ~ label {
@@ -71,6 +91,10 @@ input:valid ~ label {
     font-size: 1rem;
     padding: 0 35px 0 5px;
     color: #fff;
+}
+
+input label {
+  color: #fff;
 }
 
 .inputbox ion-icon {
@@ -109,7 +133,7 @@ input:valid ~ label {
     text-decoration: underline;
 }
 
-button {
+.input-button button {
     width: 100%;
     height: 40px;
     border-radius: 40px;
@@ -122,7 +146,7 @@ button {
     transition: all 0.4s ease;
 }
 
-button:hover {
+.input-button button:hover {
   background-color: rgb(255, 255,255, 0.5);
 }
 
@@ -195,5 +219,23 @@ GSAP
     height: 100%;
     object-fit: cover;
     object-position: center center;
+  }
+  
+
+  .type-link {
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    position: relative;
+  }
+  
+  .type-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: black;
   }
   

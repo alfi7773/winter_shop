@@ -1,17 +1,61 @@
 {% extends 'base.html' %}
+<title>{% block title %}| Cart{% endblock title %}</title>
 {% block content %}
-<h2>Корзина</h2>
-<ul>
-    <div class="display2">
-        {% for item in cart_items %}
-        <div>
-            <img src="{{ item.product.image.url }}" alt="">
-            <li>{{ item.product.name }} - Количество: {{ item.quantity }}</li>
-        </div>
+
+<div class="container">
+    <header class="display">
+      <div class="cust-display">
+        {% for type in types %}
+          <a href="{% url "type" type.id %}" class="type-link">{{ type.name }}</a>
         {% endfor %}
+      </div>
+      <div>
+        <div class="logo"></div>
+      </div>
+      <div class="cust-display">
+        {% if not request.user.is_authenticated %}
+        <div class="col-nav">
+          <a href="{% url "register" %}">
+            <i class="fa-solid fa-user"></i>
+            <a href="">РЕГИСТРАЦИЯ</a>
+          </a>
+        </div>
+        {% endif %}
+      
+
+        {% if not request.user.is_authenticated %}
+        <div class="col-nav">
+          <a href="{% url "login" %}">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            </svg>
+            
+            <a href="{% url "login" %}">ВОЙТИ</a>
+        </a>
     </div>
-    
-    
-</ul>
+    {% endif %}
+</header>
+</div>
+
+        <div>
+
+            {% comment %} <h2>Корзина</h2> {% endcomment %}
+            
+            <ul>
+                <div class="col-nav">
+                    {% for item in cart_items %}
+                    <div class="display cart-board">
+                        <a href="{% url 'detail' item.product.id %}">
+                            <img src="{{ item.product.image.url }}" alt="">
+                        </a>
+                            <p> {{ item.product.decription }}</p>
+                            <li>{{ item.product.name }} - Количество: {{ item.quantity }}</li>
+                            <p> {{ item.product.price }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                
+            </ul>
+        </div>
 
 {% endblock content %}

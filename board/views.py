@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 
@@ -5,23 +6,25 @@ from .filter import ProductFilter
 
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.sessions.models import Session
 
-
+@login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart = request.session.get('cart', {})
 
     if str(product_id) in cart:
-        cart[str(product_id)] += 1
+        cart[str(product_id)] += 1 
     else:
-        cart[str(product_id)] = 1
+        cart[str(product_id)] = 1  
 
     request.session['cart'] = cart 
     return redirect('cart')
+
 
 
 def cart_view(request):
@@ -34,8 +37,6 @@ def cart_view(request):
     ]
 
     return render(request, 'cart.html', {'cart_items': cart_items})
-
-
 def main(request):
     countries = Country.objects.all()
     cities = City.objects.all()
@@ -48,8 +49,8 @@ def main(request):
     text = '<h1>hello</h1>'
     return render(request, 'index.html', {
         'categories': categories,
-        'countries': countries,
         'types': types,
+        'countries': countries,
         'brands': brands,
         'products': products,
         'categories2': categories2,
@@ -146,10 +147,16 @@ def at_category(request, id):
 def type(request,  id):
     type = get_object_or_404(Type, id=id)
     products = Product.objects.filter(type=type)
+    categories = Category.objects.all()
+    types = Type.objects.all()
+    categories2 = AtCategory.objects.all()
     
     return render(request, 'type_element.html', {
         'type': type,
         'products': products,
+        'categories': categories,
+        'types': types,
+        'categories2': categories2,
     })
     
     

@@ -1,86 +1,70 @@
-{% load static %}
-{% comment %} {% extends 'base.html' %} {% endcomment %}
-{% comment %} {% block content %} {% endcomment %}
+{% extends 'base.html' %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="login-page">
+
+<section class="section">
+    <form action="{% url 'register' %}" method="post" novalidate>
+        {% csrf_token %}
+        <h1>Register</h1>
     
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Document</title>
-</head>
-
-    <body>
-        <section>
-            <form action="{% url 'register' %}" method="post" novalidate>
-                {% csrf_token %}
-                <h1>Login</h1>
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    {% comment %} <input type="email" required> {% endcomment %}
-                    {{ form.username }}
-                    <div class="red-text">
-                        {{ form.username.errors }}
-                    </div>
-                    {% comment %} <label for="">username</label> {% endcomment %}
-                </div>
-
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    {% comment %} <input type="email" required> {% endcomment %}
-                    {{ form.first_name }}
-                    <div class="red-text">
-                        {{ form.first_name.errors }}
-                    </div>
-                    {% comment %} <label for="">first_name</label> {% endcomment %}
-                </div>
-
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    {{ form.last_name }}
-                    <div class="red-text">
-                        {{ form.last_name.errors }}
-                    </div>
-                    {% comment %} <label for="">last_name</label> {% endcomment %}
-                </div>
-
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    {% comment %} <input type="email" required> {% endcomment %}
-                    {{ form.email }}
-                    <div class="red-text">
-                        {{ form.email.errors }}
-                    </div>
-                    {% comment %} <label for="">Email</label> {% endcomment %}
-                </div>
-
-                <div class="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    {% comment %} <input type="email" required> {% endcomment %}
-                    {{ form.password1 }}
-                    <div class="red-text">
-                        {{ form.password1.errors }}
-                    </div>
-                    {% comment %} <label for="">password1</label> {% endcomment %}
-                </div>
-                
-                <div class="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    {{ form.password2 }}
-                    <div class="red-text">
-                        {{ form.password2.errors }}
-                    </div>
-                    {% comment %} <label for="">password2</label> {% endcomment %}
-                </div>
-
-                <button type="submit">Register</button>
+        <div class="inputbox">
+            <ion-icon name="person-outline"></ion-icon>
+            {{ form.username }}
+            <div class="red-text">
+                {{ form.username.errors }}
+            </div>
+        </div>
+    
+        <div class="inputbox">
+            <ion-icon name="person-outline"></ion-icon>
+            {{ form.first_name }}
+            <div class="red-text">
+                {{ form.first_name.errors }}
+            </div>
+        </div>
+    
+        <div class="inputbox">
+            <ion-icon name="person-outline"></ion-icon>
+            {{ form.last_name }}
+            <div class="red-text">
+                {{ form.last_name.errors }}
+            </div>
+        </div>
+    
+        <div class="inputbox">
+            <ion-icon name="mail-outline"></ion-icon>
+            {{ form.email }}
+            <div class="red-text">
+                {{ form.email.errors }}
+            </div>
+        </div>
+    
+        <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            {{ form.password1 }}
+            <div class="red-text">
+                {{ form.password1.errors }}
+            </div>
+        </div>
+    
+        <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            {{ form.password2 }}
+            <div class="red-text">
+                {{ form.password2.errors }}
+            </div>
+        </div>
+    
+        <div class="input-button">
+            <button type="submit">Register</button>
+        </div>
+    
                 <div class="forget">
                     <label for=""><input type="checkbox">Remember Me</label>
                   <a href="#">Forget Password</a>
                 </div>
-                <button>Log in</button>
+                
                 <div class="register">
                     <p>Don't have a account <a href="#">Register</a></p>
                 </div>
@@ -88,6 +72,4 @@
         </section>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    </body>
-
-</html>
+{% endblock content %} 

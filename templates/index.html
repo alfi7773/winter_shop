@@ -7,7 +7,7 @@
     <header class="display">
       <div class="cust-display">
         {% for type in types %}
-          <a href="{% url "type" type.id %}">{{ type.name }}</a>
+          <a href="{% url "type" type.id %}" class="type-link">{{ type.name }}</a>
         {% endfor %}
       </div>
       <div>
@@ -27,7 +27,9 @@
         {% if not request.user.is_authenticated %}
         <div class="col-nav">
           <a href="{% url "login" %}">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            </svg>
+            
             <a href="{% url "login" %}">ВОЙТИ</a>
           </a>
         </div>
@@ -38,7 +40,7 @@
           </a>
         </div>
         <div class="col-nav">
-          <a href="">
+          <a href="{% url "cart" %}">
             <i class="fa-solid fa-cart-shopping"></i><a href="{% url "cart" %}">Корзина</a>
           </a>
         </div>
@@ -50,7 +52,7 @@
 
         <div class="col-nav">
           <a href="{% url "workspace" %}">
-            <i class="fa-solid fa-magnifying-glass"></i><a href="">WORKSPACE</a>
+            <i class="fa-solid fa-circle-user"></i><a href="{% url "workspace" %}">WORKSPACE</a>
           </a>
         </div>
         {% if request.user.is_authenticated %}

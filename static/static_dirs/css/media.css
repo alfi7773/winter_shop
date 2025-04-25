@@ -1,0 +1,19 @@
+@media (max-width: 480) {
+
+    * {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .slider-container3 {
+        display: none;
+    }
+
+    header {
+        display: none;
+    }
+
+    .display {
+        display: none;
+    }
+}

@@ -18,17 +18,15 @@ class RegisterForm(UserCreationForm):
         } 
         
         
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.fields['password1'].widget = forms.PasswordInput(attrs={'class': 'inputbox', 'placeholder': 'password1'})
-            self.fields['password2'].widget = forms.PasswordInput(attrs={'class': 'inputbox', 'placeholder': 'password2'})
-            
             
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             self.fields['first_name'].required = True
             self.fields['last_name'].required = True
             self.fields['email'].required = True
+            
+            # self.fields['password1'].widget = forms.PasswordInput(attrs={'class': 'inputbox',  'placeholder': 'password1'})
+            # self.fields['password2'].widget = forms.PasswordInput(attrs={'class': 'inputbox', 'placeholder': 'password2'})
             
             
 class LoginForm(forms.Form):

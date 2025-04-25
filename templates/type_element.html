@@ -5,6 +5,324 @@
 {% endblock title %}
 {% block content %}
 <div class="container">
+
+    <header class="display">
+        <div class="cust-display">
+            {% for type in types %}
+              <a href="{% url "type" type.id %}" class="type-link">{{ type.name }}</a>
+            {% endfor %}
+          </div>
+        <div>
+          <div class="logo"></div>
+        </div>
+        <div class="cust-display">
+          {% if not request.user.is_authenticated %}
+          <div class="col-nav">
+            <a href="{% url "register" %}">
+              <i class="fa-solid fa-user"></i>
+              <a href="">РЕГИСТРАЦИЯ</a>
+            </a>
+          </div>
+          {% endif %}
+        
+  
+          {% if not request.user.is_authenticated %}
+          <div class="col-nav">
+            <a href="{% url "login" %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h13"/>
+                <path d="M12 5l7 7-7 7"/>
+              </svg>
+              
+              <a href="{% url "login" %}">ВОЙТИ</a>
+            </a>
+          </div>
+          {% endif %}
+          <div class="col-nav">
+            <a href="">
+              <i class="fa-solid fa-star"></i><a href="">Избранное</a>
+            </a>
+          </div>
+          <div class="col-nav">
+            <a href="">
+              <i class="fa-solid fa-cart-shopping"></i><a href="{% url "cart" %}">Корзина</a>
+            </a>
+          </div>
+          <div class="col-nav">
+            <a href="">
+              <i class="fa-solid fa-magnifying-glass"></i><a href="">ПОИСК</a>
+            </a>
+          </div>
+  
+          <div class="col-nav">
+            <a href="{% url "workspace" %}">
+              <i class="fa-solid fa-magnifying-glass"></i><a href="">WORKSPACE</a>
+            </a>
+          </div>
+          {% if request.user.is_authenticated %}
+          <div class="col-nav">
+            <a href="{% url "logout" %}">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <a href="">
+                ВЫЙТИ
+              </a>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </header>
+      <section>
+        <div class="cust-display display-category">
+          {% for category in categories|slice:"1" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                        <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+        
+  
+  
+        {% for category in categories|slice:"1:2" %}
+        <ul class="menu">
+        <li class="category">
+          <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+              <ul class="submenu">
+                  {% for cat in categories2 %}
+                  <li>
+                    <a href="{% url "cat" cat.id %}">
+                          {{ cat.name }}
+                      </a>
+                  </li>
+                  {% endfor %}
+              </ul>
+          </li>
+          {% endfor %}
+      </ul>
+  
+      {% for category in categories|slice:"2:3" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"3:4" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"4:5" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"5:6" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"6:7" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"7:8" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"8:9" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"9:10" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"10:11" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        {% for category in categories|slice:"11:12" %}
+          <ul class="menu">
+          <li class="category">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+                <ul class="submenu">
+                    {% for cat in categories2 %}
+                    <li>
+                      <a href="{% url "cat" cat.id %}">
+                            {{ cat.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+  
+        </div>
+      </section>
+      <div></div>
+    </div>
+
+    {% if type.name == "Мужчинам" %}
+    <div class="pad-50">
+      <div class="slider-container">
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <div class="slider">
+            <div class="slide">
+              <div class="img-1-type"></div>
+            </div>
+            <div class="slide">
+              <div class="img-2"></div>
+            </div>
+            <div class="slide">
+              <div class="img-3"></div>
+            </div>
+          </div>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        {% endif %}
+
+
+        {% if type.name == "Женщинам" %}
+    <div class="pad-50">
+      <div class="slider-container">
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <div class="slider">
+            <div class="slide">
+              <div class="first-type"></div>
+            </div>
+            <div class="slide">
+              <div class="img-2"></div>
+            </div>
+            <div class="slide">
+              <div class="img-3"></div>
+            </div>
+          </div>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        {% endif %}
+
     {% if products %}
     <h1 class="text-center">
         {{ type.name }}

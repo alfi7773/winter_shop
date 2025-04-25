@@ -100,6 +100,9 @@ class Product(TimeAbstractModel):
     class Meta:
         verbose_name_plural = 'товары'
         verbose_name = 'товар'
+        permissions = [
+            ("add_to_cart", "Can add product to cart"),
+        ]
         
     name = models.CharField(verbose_name='название', max_length=100)
     decription = models.CharField('описание', max_length=100)
@@ -151,5 +154,14 @@ class AttributeProduct(TimeAbstractModel):
     def __str__(self):
         return f'{self.name} - {self.value}'
     
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cart = models.JSONField(default=dict) 
+
+    def __str__(self):
+        return self.user.username
+
 
 # Create your models here.
