@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container">
 
-    <header class="display">
+    <header class="display media-none">
         <div class="cust-display">
             {% for type in types %}
               <a href="{% url "type" type.id %}" class="type-link">{{ type.name }}</a>
@@ -328,10 +328,31 @@
         {{ type.name }}
     </h1>
 
-    <div class="display2">
+
+    <div class="slider-container2">
+      <button class="prev2" onclick="scrollSlider(-1)">&#10094;</button>
+      <div class="slider2" id="productSlider">
+        {% for product in products %}
+        
+        <div class="card">
+            <a href="{% url "detail" product.id %}">
+            <img class="div-img" src="{{ product.image.url }}" alt="" />
+            <h3>{{ product.name }}</h3>
+            <p class="gray">{{ product.decription }}</p>
+            <h3>{{ product.price }}P</h3>
+            
+          </a>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="next2" onclick="scrollSlider(1)">&#10095;</button>
+    </div>
+  </div>
+
+
+    {% comment %} <div class="display2">
         {% for product in products %}
           
-        {% comment %} <div class="card"> {% endcomment %}
             <a href="{% url "detail" id=product.id %}">
             <img class="div-img" src="{{ product.image.url }}" alt="" />
             <h3>{{ product.name }}</h3>
@@ -340,9 +361,8 @@
             <p class="gray">{{ product.decription }}</p>
             <h3>{{ product.price }}P</h3>
           </a>
-          {% comment %} </div> {% endcomment %}
         {% endfor %}
-    </div>
+    </div> {% endcomment %}
     {% else %}
     <h1>No elements</h1>
     {% endif %}

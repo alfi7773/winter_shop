@@ -24,4 +24,54 @@
       <div class="answer"></div><a href="">Возврат в течение 14 дней</a>
     </div>
   </div>
+
+  <div class="container main-none">
+    <header class="display">
+      <div class="display">
+        <a href="/">
+          <div class="logo"></div>
+        </a>
+        <div class="col-nav main-non">
+          <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+        </div>
+          <button class="burger" id="burger">&#9776;</button>
+      </div>
+    
+    
+      <nav class="nav-menu" id="navMenu">
+        <div class="cust-display">
+          {% for type in types %}
+            <a href="{% url "type" type.id %}" class="type-link">{{ type.name }}</a>
+          {% endfor %}
+        </div>
+        <div class="cust-display">
+          {% if not request.user.is_authenticated %}
+            <div class="col-nav">
+              <a href="{% url "register" %}"><i class="fa-solid fa-user"></i> РЕГИСТРАЦИЯ</a>
+            </div>
+            <div class="col-nav">
+              <a href="{% url "login" %}"><i class="fa-solid fa-right-to-bracket"></i> ВОЙТИ</a>
+            </div>
+          {% endif %}
+          <div class="col-nav">
+            <a href=""><i class="fa-solid fa-star"></i> Избранное</a>
+          </div>
+          <div class="col-nav">
+            <a href="{% url "cart" %}"><i class="fa-solid fa-cart-shopping"></i> Корзина</a>
+          </div>
+          <div class="col-nav">
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i> ПОИСК</a>
+          </div>
+          <div class="col-nav">
+            <a href="{% url "workspace" %}"><i class="fa-solid fa-circle-user"></i> WORKSPACE</a>
+          </div>
+          {% if request.user.is_authenticated %}
+            <div class="col-nav">
+              <a href="{% url "logout" %}"><i class="fa-solid fa-right-from-bracket"></i> ВЫЙТИ</a>
+            </div>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
+  </div>
 </nav>

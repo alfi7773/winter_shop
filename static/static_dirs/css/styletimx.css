@@ -288,7 +288,7 @@ a {
     align-items: center;
     position: relative;
     width: 1000%;
-    max-width: 1400px;
+    max-width: 1350px;
     margin: auto;
     overflow: hidden;
 }
@@ -311,6 +311,23 @@ a {
     display: none;
 }
 
+.shoes {
+    background-image: url(../image/shoes.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1200px;
+    height: 340px;
+    margin-top: 100px;
+}
+
+.center {
+    text-align: center;
+}
+
+.mar-30 {
+    margin-top: 30px;
+}
 
 .buttons {
     background: white;
@@ -456,7 +473,7 @@ a {
 }
 
 .pad-200 {
-    padding-top: 200px;
+    padding-top: 70px;
 }
 
 /* .logo-2 {
